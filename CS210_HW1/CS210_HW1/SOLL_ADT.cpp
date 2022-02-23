@@ -69,8 +69,5 @@ bool SOLLADT<T>::search_mtf(T element)
 template<class T>
 bool SOLLADT<T>::search_t(T element)
 {
-	
 	// Implement here!
-
-
 };

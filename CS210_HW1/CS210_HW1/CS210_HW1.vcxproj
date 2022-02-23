@@ -141,11 +141,7 @@
   <ItemGroup>
     <ClCompile Include="Driver-1.cpp" />
     <ClCompile Include="Floyd_Warshall.cpp" />
-    <ClCompile Include="SOLL_ADT.cpp" />
     <ClCompile Include="Source.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SOLL_ADT.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

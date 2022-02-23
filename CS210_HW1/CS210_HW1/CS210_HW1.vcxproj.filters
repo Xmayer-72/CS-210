@@ -24,13 +24,5 @@
     <ClCompile Include="Floyd_Warshall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SOLL_ADT.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SOLL_ADT.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
