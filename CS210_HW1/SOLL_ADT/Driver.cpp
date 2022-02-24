@@ -10,9 +10,8 @@ int main()
     SOLLADT<char> testListMTF;
     cout << "1. Given Test Cases:\n\n";
     cout << "Insert A, Insert C, Insert B, Search C, Insert D, Search A, Search D, Search A, Search C, Search A, Search C, Search C, Insert E Search E\n\n\n";
-        cout << "Standard search: \n\n";
+    cout << "Standard search: \n\n";
 
-        cout << "this is a test";
     testList.insert('A');
     testList.insert('C');
     testList.insert('B');

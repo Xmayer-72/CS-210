@@ -28,9 +28,9 @@ void SOLLADT<T>::insert(T element)
 	newNode->link = NULL;
 
 	/* 4. if list is empty, new node becomes first node */
-	if (head->data == NULL)
+	if (head == NULL)
 	{
-		head->data = newNode;
+		head = newNode;
 		return;
 	}
 
@@ -100,6 +100,7 @@ void SOLLADT<T>::showSOLL()
 
 
 };
+
 template<class T>
 SOLLNode<T>* SOLLADT<T>::search_helper(T element)
 {
@@ -109,6 +110,7 @@ SOLLNode<T>* SOLLADT<T>::search_helper(T element)
 
 
 };
+
 template<class T>
 bool SOLLADT<T>::search(T element)
 {
@@ -135,6 +137,7 @@ bool SOLLADT<T>::search(T element)
 	return false;
 
 };
+
 template<class T>
 bool SOLLADT<T>::search_mtf(T element)
 {
@@ -162,6 +165,7 @@ bool SOLLADT<T>::search_mtf(T element)
 
 
 };
+
 template<class T>
 bool SOLLADT<T>::search_t(T element)
 {
