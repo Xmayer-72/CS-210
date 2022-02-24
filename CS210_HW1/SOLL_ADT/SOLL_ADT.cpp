@@ -12,6 +12,8 @@ SOLLADT<T>::SOLLADT() : head(NULL)
 template<class T>
 void SOLLADT<T>::insert(T element)
 {
+	cout << "Inseting " << element << endl;
+
 	/* 1. create and allocate node */
 	SOLLNode<T>* newNode = new SOLLNode<T>;
 
@@ -43,17 +45,9 @@ void SOLLADT<T>::insert(T element)
 template<class T>
 void SOLLADT<T>::showSOLL()
 {
-
-	/*
-	while (current->link != NULL) {
-
-		cout << current->data << "->";
-
-	}
-	*/
 	//traverse the list to display each node
 	SOLLNode<T>* current = head;
-	while (current->data != NULL)
+	while (current != NULL)
 	{
 		cout << current->data << "-->";
 		current = current->link;
@@ -75,23 +69,21 @@ SOLLNode<T>* SOLLADT<T>::search_helper(T element)
 template<class T>
 bool SOLLADT<T>::search(T element)
 {
-	
+	cout << "searching for " << element << endl;
+
 	SOLLNode<T>* current = head;
 	SOLLNode<T>* prev = NULL;
 
-	while (current != NULL) {
+	while (current->link != NULL) {
 
 		if (current->data == element) {
-
-			if (prev != NULL) {
-
-				prev->link = current->link;
-				current->link = head;
-				head = current;
-			}
 			
 			return true;
 
+		}
+		else
+		{
+			current = current->link;
 		}
 
 	}
@@ -102,6 +94,7 @@ bool SOLLADT<T>::search(T element)
 template<class T>
 bool SOLLADT<T>::search_mtf(T element)
 {
+	cout << "searching for " << element << endl;
 
 	SOLLNode<T>* current = head;
 	SOLLNode<T>* prev = NULL;
@@ -130,6 +123,7 @@ bool SOLLADT<T>::search_mtf(T element)
 template<class T>
 bool SOLLADT<T>::search_t(T element)
 {
+	cout << "searching for " << element << endl;
 
 	SOLLNode<T>* current = head;
 	SOLLNode<T>* prev = NULL;

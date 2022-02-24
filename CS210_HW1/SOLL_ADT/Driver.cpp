@@ -27,6 +27,7 @@ int main()
     testList.insert('E');
     testList.search('E');
     testList.showSOLL();
+
     cout << "\n\n\nMTF search: \n\n";
     testListMTF.insert('A');
     testListMTF.insert('C');
@@ -42,6 +43,7 @@ int main()
     testListMTF.insert('E');
     testListMTF.search_mtf('E');
     testListMTF.showSOLL();
+
     cout << "\n\n\nTranspose search: \n";
     testListTranspose.insert('A');
     testListTranspose.insert('C');
