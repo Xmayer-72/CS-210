@@ -8,6 +8,7 @@ int main()
     SOLLADT<char> testList;
     SOLLADT<char> testListTranspose;
     SOLLADT<char> testListMTF;
+    SOLLADT<char> testListPersonal;
     cout << "1. Given Test Cases:\n\n";
     cout << "Insert A, Insert C, Insert B, Search C, Insert D, Search A, Search D, Search A, Search C, Search A, Search C, Search C, Insert E Search E\n\n\n";
     cout << "Standard search: \n\n";
@@ -64,7 +65,12 @@ int main()
     cout << "\n\n\n2. Our Test Cases:\n\n";
     // Your test cases here
  
-        // Implement here!
+
+    testListPersonal.insert('A');
+    testListPersonal.insert('C');
+    testListPersonal.insert('D');
+    testListPersonal.search_t('D');
+    testListPersonal.showSOLL();
 
 
     cout << "\n\n\n";
