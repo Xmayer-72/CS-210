@@ -43,14 +43,6 @@ void SOLLADT<T>::insert(T element)
 template<class T>
 void SOLLADT<T>::showSOLL()
 {
-
-	/*
-	while (current->link != NULL) {
-
-		cout << current->data << "->";
-
-	}
-	*/
 	//traverse the list to display each node
 	SOLLNode<T>* current = head;
 	while (current->data != NULL)
