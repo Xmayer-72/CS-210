@@ -8,6 +8,7 @@ template<class T>
 SOLLADT<T>::SOLLADT() : head(NULL)
 {
 };
+
 template<class T>
 void SOLLADT<T>::insert(T element)
 {
