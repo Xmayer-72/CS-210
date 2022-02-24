@@ -1,0 +1,8 @@
+﻿  Floyd_Warshall.cpp
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(155,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(157,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(189,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(191,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(235,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Michael\source\repos\Floyd_Warshall\Floyd_Warshall\Floyd_Warshall.cpp(237,21): warning C4018: '<': signed/unsigned mismatch
+  Floyd_Warshall.vcxproj -> C:\Users\Michael\source\repos\Floyd_Warshall\Debug\Floyd_Warshall.exe
