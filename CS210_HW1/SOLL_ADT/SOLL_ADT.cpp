@@ -12,10 +12,6 @@ SOLLADT<T>::SOLLADT() : head(NULL)
 template<class T>
 void SOLLADT<T>::insert(T element)
 {
-
-	//SOLLNode<T>* temp = (SOLLNode<T>*)malloc(sizeof(SOLLNode<T>));
-	//SOLLNode<T>* head = NULL, * rear = NULL, * current = head;
-
 	/* 1. create and allocate node */
 	SOLLNode<T>* newNode = new SOLLNode<T>;
 
@@ -38,47 +34,12 @@ void SOLLADT<T>::insert(T element)
 	while (rear->link != NULL) {
 		rear = rear->link;
 	}
+
 	/* 6. Change the next of last node */
 	rear->link = newNode;
 	return;
-
-
-
-	/*temp->data = element;
-	temp->link = NULL;
-
-	while (head != NULL) {
-
-		if (head->data == temp->data) {
-			cout << "Item already in List";
-		}
-		head->link = current->link;
-		current->link = rear->link;
-	}
-
-	if (head->data == NULL) {
-		current->data = temp->data;
-		head->link = current->link;
-	}
-	*/
-
-	// assigning value to the created node;
-	/*temp->data = element;
-	temp->link = NULL;
-	
-	// first element of list
-	if (head == NULL)
-		head = rear = temp;
-		
-	// rest elements of list
-	else {
-		rear->link = temp;
-		rear = temp;
-	}
-	*/
-
-
 };
+
 template<class T>
 void SOLLADT<T>::showSOLL()
 {
