@@ -41,7 +41,7 @@ void print_D_and_P_arrays(Solution soln)
 		cout << var << " -> ";
 	}
 
-	cout << "P array:";
+	cout << "\nP array:";
 	for (int var : soln.P)
 	{
 		cout << var << " -> ";
