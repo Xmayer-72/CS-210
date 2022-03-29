@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include <String>
 
 #define INF 999
 
@@ -34,17 +35,17 @@ Solution dijkstra(vector<vector<int>> graph, int source_vertex)
 
 void print_D_and_P_arrays(Solution soln)
 {
+	cout << "D array:";
+	for(int var: soln.D)
+	{
+		cout << var << " -> ";
+	}
 
-
-
-
-
-	// Implement here!
-
-
-
-
-
+	cout << "P array:";
+	for (int var : soln.P)
+	{
+		cout << var << " -> ";
+	}
 }
 
 
@@ -67,17 +68,14 @@ void print_shortest_paths(Solution soln, int source_vertex, int v_r)
 
 void print_matrix(vector< vector<int> > dist)
 {
-
-
-
-
-
-	// Implement here!
-
-
-
-
-
+	for (vector<int> vect:dist)
+	{
+		for (int num: vect)
+		{
+			printf("%4d ", num);
+		}
+		cout << "\n";
+	}
 }
 
 
