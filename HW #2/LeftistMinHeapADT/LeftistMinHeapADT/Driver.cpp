@@ -95,7 +95,46 @@ int main()
 	cout << "Our Test Cases:\n**********" << endl;
 
 
-	// Implement here
+	// Our Test Cases
+	//LH4
+	cout << "LH4: Insert 12, 2, 7, 8, 56, 74, 53 and 3\n\n";
+	LeftistHeap<int> lhInt4;
+	lhInt4.insert(12);
+	lhInt4.insert(2);
+	lhInt4.insert(7);
+	lhInt4.insert(8);
+	lhInt4.insert(56);
+	lhInt4.insert(74);
+	lhInt4.insert(53);
+	lhInt4.insert(3);
+	cout << "LH3:\n" << endl;
+	cout << "Print priority values:" << endl;
+	lhInt4.showLH();
+	cout << endl;
+	cout << "Print SPL values:" << endl;
+	lhInt4.showSPL();
+	cout << endl;
+
+	cout << "DeleteRoot(LH4)\n\n";
+	//deleteMin
+	cout << "DeleteMin(LH4):\n" << endl;
+	lhInt4.deleteMin();
+	cout << "Print priority values:" << endl;
+	lhInt4.showLH();
+	cout << endl;
+	cout << "Print SPL values:" << endl;
+	lhInt4.showSPL();
+	cout << endl;
+
+	cout << "DeleteRoot(LH4)\n\n";
+	cout << "DeleteMin(LH4):\n" << endl;
+	lhInt4.deleteMin();
+	cout << "Print priority values:" << endl;
+	lhInt4.showLH();
+	cout << endl;
+	cout << "Print SPL values:" << endl;
+	lhInt4.showSPL();
+	cout << endl;
 
 
 
