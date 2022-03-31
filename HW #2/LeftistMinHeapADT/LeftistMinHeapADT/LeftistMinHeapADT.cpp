@@ -54,8 +54,12 @@ LeftistNode<T>* LeftistHeap<T>::merge2(LeftistNode<T>* h1, LeftistNode<T>* h2) c
 	// Recursively merge its right subtree and the other tree h2. 
 	h1->right = merge1(h1->right, h2);
 	// Swap if needed.
-	if (h1->left->spl < h1->right->spl)
+	if (!h1->left) {
+		h1->left = h2;
+		h2 = NULL;
+	} else if (h1->left->spl < h1->right->spl) {
 		swapChildren(h1);
+	}
 	// Update the spl of the merged root.
 	h1->spl = h1->right->spl + 1;
 	return h1;
@@ -129,7 +133,14 @@ template <class T>
 void LeftistHeap<T>::showSPL() const
 {
 
-	// Implement here
+	if (root == 0) {
+		cout << "Empty Heap" << endl;
+	}
+	else {
+		cout << endl;
+		showSPLHelper(root, 1);
+		cout << endl;
+	}
 
 }
 
@@ -140,6 +151,17 @@ template <class T>
 void LeftistHeap<T>::showSPLHelper(LeftistNode<T>* p, int level) const
 {
 
-	// Implement here
+	int j;
+	if (p != 0)
+	{
+		showSPLHelper(p->right, level + 1);         // Output right subtree
+		for (j = 0; j < level; j++) cout << "\t";
+		cout << " " << p->priority;   // Output key
+		if ((p->left != 0) && (p->right != 0)) cout << "<";
+		else if (p->right != 0) cout << "/";
+		else if (p->left != 0) cout << "\\";
+		cout << endl;
+		showSPLHelper(p->left, level + 1); // Output left subtree
+	}
 
 }
