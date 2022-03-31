@@ -6,12 +6,16 @@
 
 using namespace std;
 
+int minDist(int dist[], bool SPfound[]);
+
 struct Solution
 {
 	vector<int> D;
 	vector<int> P;
 };
 
+int dist[6];
+bool SPfound[6];
 
 Solution dijkstra(vector<vector<int>> graph, int source_vertex)
 {
@@ -22,7 +26,22 @@ Solution dijkstra(vector<vector<int>> graph, int source_vertex)
 
 
 
-	// Implement here!
+	
+	for (int index = 0; index <= 5; index++) {
+		dist[index] = INF;
+		SPfound[index] = false;
+	}
+	
+	dist[source_vertex] = 0;
+
+	for (int i = 0; i <= 5; i++) {
+		int m = minDist(dist, SPfound);
+		SPfound[i] = true;
+		for (int j = 0; j <= 5; j++) {
+			if (SPfound[j] && graph[m][j] && dist[m] != INF && dist[m] + graph[m][j] < dist[j])
+				dist[j] = dist[m] + graph[m][j];
+		}
+	}
 
 
 
@@ -31,7 +50,20 @@ Solution dijkstra(vector<vector<int>> graph, int source_vertex)
 	return dijkstra_solution;
 }
 
+int minDist(int dist[], bool SPfound[]) {
 
+	int min1 = INF;
+	int min2 = INF;
+
+	for (int k = 0; k < 5; k++) {
+		if (SPfound[k] == false && dist[k] <= min1) {
+			min1 = dist[k];
+			min2 = k;
+		}
+	}
+	return min2;
+
+}
 
 void print_D_and_P_arrays(Solution soln)
 {
@@ -57,7 +89,10 @@ void print_shortest_paths(Solution soln, int source_vertex, int v_r)
 
 
 
-	// Implement here!
+	for (int i = 0; i < 5; i++) {
+		char str = 5 + i;
+		cout << str << "\t\t\t" << dist[i] << endl;
+	}
 
 
 
@@ -146,14 +181,63 @@ int main()
 
 
 
-	// Implement here!
+	Solution soln3;
+
+
+	vector<vector<int>> graph3 = { { 0, 6, 5, 2, 3 },
+									{ INF, 0, INF, INF, INF },
+									{ INF,2, 0, 5,INF },
+									{ INF, 3, INF, 0, INF },
+									{ INF, INF, INF, 1, 0} };
+
+	cout << "Without Negative Edges:\n\n";
+	cout << "Graph 1:\n\n";
+	cout << "v1 is the source vertex:\n\n";
+	cout << "\t1\t2\t3\t4\t5\n";
+	cout << "---------------------------------------------\n";
+	print_matrix(graph3);
+	cout << "\n\n";
+
+	soln3 = dijkstra(graph3, 1);
+	print_D_and_P_arrays(soln3);
+	cout << "Shortest paths:" << endl;
+	for (int i = 1; i < graph3.size(); i++)
+	{
+		print_shortest_paths(soln3, 1, i);
+		cout << endl;
+	}
+	cout << "\n" << endl;
 
 
 
 	cout << "With Negative Edges:\n\n";
 
+Solution soln4;
 
-	// Implement here!
+
+	vector<vector<int>> graph4 = { { 0, 6, 5, 2, 3 },
+									{ INF, 0, INF, INF, INF },
+									{ INF,2, 0, -5,INF },
+									{ INF, 3, INF, 0, INF },
+									{ INF, INF, INF, 1, 0} };
+
+	cout << "Without Negative Edges:\n\n";
+	cout << "Graph 1:\n\n";
+	cout << "v1 is the source vertex:\n\n";
+	cout << "\t1\t2\t3\t4\t5\n";
+	cout << "---------------------------------------------\n";
+	print_matrix(graph4);
+	cout << "\n\n";
+
+	soln4 = dijkstra(graph4, 1);
+	print_D_and_P_arrays(soln4);
+	cout << "Shortest paths:" << endl;
+	for (int i = 1; i < graph4.size(); i++)
+	{
+		print_shortest_paths(soln4, 1, i);
+		cout << endl;
+	}
+	cout << "\n" << endl;
 
 
 	cout << "\n" << endl;
