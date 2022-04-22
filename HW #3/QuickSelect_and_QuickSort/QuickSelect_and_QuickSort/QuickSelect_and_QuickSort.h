@@ -2,6 +2,7 @@
 #include <array>
 #include <iostream>
 using namespace std;
+
 //Partion function used by selection
 template <class T, int N>
 void partition(int min, int max, int& pivotpoint, array<T, N>& arr)
@@ -70,6 +71,7 @@ void QuickSortMAP(int min, int max, array<T, N>& arr)
 {
 	// Implement here
 }
+
 template <class T, int N>
 void QuickSort(array<T, N>& arr)
 {
@@ -77,9 +79,8 @@ void QuickSort(array<T, N>& arr)
 }
 
 //small helper function to print out arrays
-
 template <class T, int N>
 void printArray(array<T, N> arr)
 {
-	// Implement here
+
 }
