@@ -70,22 +70,36 @@ void AVLTree<T>::showBFHelper(AVLNode<T>* p, int level) const
 template<class T>
 void AVLTree<T>::LLRotateWithLeftChild(AVLNode<T>*& t) const
 {
-	// Implement here!
+	AVLNode<T> *t1 = t->left;
+	t->left = t1->right;
+	t1->right = t;
+	t->height = max(getHeight(t->left), getHeight(t->right)) + 1;
+	t1->height = max(getHeight(t1->left), getHeight(t1->right)) + 1;
+	t = t1;
 }
 template<class T>
 void AVLTree<T>::RRRotateWithRightChild(AVLNode<T>*& t) const
 {
-	// Implement here!
+	AVLNode<T>* t1 = t->right;
+	t->right = t1->right;
+	t1->left = t;
+	t->height = max(getHeight(t->left), getHeight(t->right)) + 1;
+	t1->height = max(getHeight(t1->left), getHeight(t1->right)) + 1;
+	t = t1;
 }
 template<class T>
 void AVLTree<T>::LRDoubleWithLeftChild(AVLNode<T>*& t) const
 {
-	// Implement here!
+	RRRotateWithRightChild(t->left);
+
+	LLRotateWithLeftChild(t);
 }
 template<class T>
 void AVLTree<T>::RLDoubleWithRightChild(AVLNode<T>*& t) const
 {
-	// Implement here!
+	LLRotateWithLeftChild(t->right);
+
+	RRRotateWithRightChild(t);
 }
 template<class T>
 AVLNode<T>* AVLTree<T>::getRoot() const //added function to access the root
