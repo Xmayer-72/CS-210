@@ -51,6 +51,7 @@ T Qselection(int min, int max, int k, array<T, N>& arr)
 			return Qselection(pivot + 1, max, k, arr);
 		}
 	}
+}
 
 //k represents the kth smallest value, 
 
