@@ -6,6 +6,10 @@ using namespace std;
 template<class T>
 int AVLNode<T>::getHeight() const
 {
+	if (this == NULL)
+	{
+		return 0;
+	}
 	return height;
 }
 template<class T>
@@ -17,8 +21,7 @@ void AVLNode<T>::setHeight(int newHeight)
 template<class T>
 int AVLNode<T>::calculateBalanceFactor()
 {
-	AVLNode<T> currentNode = new AVLNode<T>();
-	int bf = ((currentNode.left->getHeight()) - (currentNode.right->getHeight()));
+	int bf = ((this->left->getHeight()) - (this->right->getHeight()));
 	return bf;
 }
 template<class T>
@@ -30,7 +33,7 @@ AVLTree<T>::AVLTree()
 template<class T>
 void AVLTree<T>::insert(const T& x)
 {
-	AVLNode<T>* n = new AVLNode<T>;
+	AVLNode<T>* n = new AVLNode<T>(x);
 	insertHelper(n, x);
 }
 //return root node
@@ -43,7 +46,8 @@ AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 	}
 	if (x > node->element) {
 		node->right = insertHelper(node->right, x);
-	} else if (x < node->element) {
+	}
+	else if (x < node->element) {
 		node->left = insertHelper(node->left, x);
 	}
 	else {
@@ -68,12 +72,13 @@ AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 	}
 	return getRoot();
 }
+
 //outputs the keys, rotated CCW 90 degrees
 //using reverse in-order traversal
 template<class T>
 void AVLTree<T>::showAvlST() const
 {
-	AVLNode<T>* n = new AVLNode<T>;
+	AVLNode<T>* n = new AVLNode<T>(0);
 	showAvlSTHelper(n, n->getHeight());
 }
 //recursive helper for showAvlST
@@ -113,11 +118,11 @@ void AVLTree<T>::showBFHelper(AVLNode<T>* p, int level) const
 template<class T>
 void AVLTree<T>::LLRotateWithLeftChild(AVLNode<T>*& t) const
 {
-	AVLNode<T> *t1 = t->left;
+	AVLNode<T>* t1 = t->left;
 	t->left = t1->right;
 	t1->right = t;
-	t->setHeight( max(t->getHeight(), t->getHeight()) + 1);
-	t1->setHeight( max(t1->getHeight(), t1->getHeight()) + 1);
+	t->setHeight(max(t->getHeight(), t->getHeight()) + 1);
+	t1->setHeight(max(t1->getHeight(), t1->getHeight()) + 1);
 	t = t1;
 }
 template<class T>
