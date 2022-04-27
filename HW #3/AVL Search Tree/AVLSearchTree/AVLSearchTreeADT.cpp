@@ -21,8 +21,18 @@ void AVLNode<T>::setHeight(int newHeight)
 template<class T>
 int AVLNode<T>::calculateBalanceFactor()
 {
-	int bf = ((this->left->getHeight()) - (this->right->getHeight()));
-	return bf;
+	int leftHeight = 0;
+	int rightHeight = 0;
+	if (left)
+	{
+		leftHeight = left->getHeight();
+	}
+	if (right)
+	{
+		rightHeight = right->getHeight();
+	}
+	balanceFactor = leftHeight - rightHeight;
+	return balanceFactor;
 }
 template<class T>
 AVLTree<T>::AVLTree()
@@ -33,14 +43,24 @@ AVLTree<T>::AVLTree()
 template<class T>
 void AVLTree<T>::insert(const T& x)
 {
-	AVLNode<T>* n = new AVLNode<T>(x);
-	insertHelper(n, x);
+	if (getRoot() == nullptr)
+	{
+		AVLNode<T>* newNode = new AVLNode<T>(x);
+		setRoot(newNode);
+		getRoot()->balanceFactor = getRoot()->calculateBalanceFactor();
+	}
+	else
+	{
+		root = insertHelper(getRoot(), x);
+	}
+	cout << x << " is Inserted" << endl;
 }
 //return root node
 //helper function for insertElement
 template<class T>
 AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 {
+	/*
 	if (getRoot() == NULL) {
 		AVLNode<T>::AVLNode(x);
 	}
@@ -71,6 +91,63 @@ AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 		RLDoubleWithRightChild(node);
 	}
 	return getRoot();
+	*/
+
+	    ////////////////////////////////////////////////////////////// SEE HERE!
+	    if (node == nullptr)
+		{
+			return new AVLNode<T>(x);
+		}
+		else
+		{
+			if (x < node->element)
+			{
+				node->left = insertHelper(node->left, x);
+			}
+			else if (x > node->element)
+			{
+				node->right = insertHelper(node->right, x);
+			}
+			//duplicate key; do not insert it
+			else
+			{
+				return node;
+			}
+
+			//update node height
+			node->setHeight(max(node->left->getHeight(), node->right->getHeight()) + 1);
+			node->balanceFactor = node->calculateBalanceFactor();
+
+			if (node->balanceFactor > 1)
+			{
+				//LL
+				if (x < node->left->element)
+				{
+					LLRotateWithLeftChild(node);
+				}
+				//LR
+				else if (x > node->left->element)
+				{
+					LRDoubleWithLeftChild(node);
+				}
+			}
+			else if (node->balanceFactor < -1)
+			{
+				//RR
+				if (x > node->right->element)
+				{
+					RRRotateWithRightChild(node);
+				}
+				//RL
+				else if (x < node->right->element)
+				{
+					RLDoubleWithRightChild(node);
+				}
+			}
+			return node;
+		}
+	
+	
 }
 
 //outputs the keys, rotated CCW 90 degrees
@@ -78,8 +155,16 @@ AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 template<class T>
 void AVLTree<T>::showAvlST() const
 {
-	AVLNode<T>* n = new AVLNode<T>(0);
-	showAvlSTHelper(n, n->getHeight());
+	if (getRoot() == 0)
+	{
+		cout << "Empty tree" << endl;
+	}
+	else
+	{
+		cout << endl;
+		showAvlSTHelper(getRoot(), 1);
+		cout << endl;
+	}
 }
 //recursive helper for showAvlST
 //outputs the subtree with root at p
@@ -87,17 +172,22 @@ void AVLTree<T>::showAvlST() const
 template<class T>
 void AVLTree<T>::showAvlSTHelper(AVLNode<T>* p, int level) const
 {
-	int i = p->getHeight();
-	for (i; i > 0; --i) {
-		showAvlSTHelper(p->right, i);
-		cout << p->element << " ";
-	}
-	showAvlSTHelper(getRoot(), 0);
-	cout << p->element << " ";
-
-	for (i; i > 0; --i) {
-		showAvlSTHelper(p->left, i);
-		cout << p->element << " ";
+	if (p != 0)
+	{
+		//output right subtree
+		showAvlSTHelper(p->right, level + 1);
+		for (int j = 0; j < level; j++) cout << "\t"; //set j to int
+		//output key
+		cout << " " << p->element;
+		//two children
+		if ((p->left != 0) && (p->right != 0)) cout << "<";
+		//only right child
+		else if (p->right != 0) cout << "/";
+		//only left child
+		else if (p->left != 0) cout << "\\";
+		cout << endl;
+		//output left subtree
+		showAvlSTHelper(p->left, level + 1);
 	}
 }
 //outputs the balance factors, rotated CCW 90 degrees
