@@ -69,7 +69,15 @@ T QuickSelect(int k, array<T, N>& arr)
 template <class T, int N>
 void QuickSortMAP(int min, int max, array<T, N>& arr)
 {
-	// Implement here
+	if (min < max) {
+	
+		int indexOfMedian = (max + min) / 2;
+		Qselection(min, max, indexOfMedian, arr); //Qselection partitions wrt the median value at indexOfMedian
+
+		QuickSortMAP(min, indexOfMedian - 1, arr);
+		QuickSortMAP(indexOfMedian + 1, max, arr);
+	
+		}
 }
 
 template <class T, int N>
@@ -82,5 +90,7 @@ void QuickSort(array<T, N>& arr)
 template <class T, int N>
 void printArray(array<T, N> arr)
 {
-
+	for (int i = 0; i < arr.size(); i++) {
+		cout << arr.at(i) << " ";
+	}
 }
