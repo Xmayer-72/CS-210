@@ -60,40 +60,7 @@ void AVLTree<T>::insert(const T& x)
 template<class T>
 AVLNode<T>* AVLTree<T>::insertHelper(AVLNode<T>* node, const T& x)
 {
-	/*
-	if (getRoot() == NULL) {
-		AVLNode<T>::AVLNode(x);
-	}
-	if (x > node->element) {
-		node->right = insertHelper(node->right, x);
-	}
-	else if (x < node->element) {
-		node->left = insertHelper(node->left, x);
-	}
-	else {
-		return getRoot();
-	}
-
-	node->setHeight(1 + max(node->left->getHeight(), node->right->getHeight()));
-
-	int balance = node->calculateBalanceFactor();
-
-	if (balance > 1 && x < node->left->element) {
-		LLRotateWithLeftChild(node);
-	}
-	if (balance < -1 && x < node->right->element) {
-		RRRotateWithRightChild(node);
-	}
-	if (balance > 1 && x > node->left->element) {
-		LRDoubleWithLeftChild(node);
-	}
-	if (balance < -1 && x > node->right->element) {
-		RLDoubleWithRightChild(node);
-	}
-	return getRoot();
-	*/
-
-	    ////////////////////////////////////////////////////////////// SEE HERE!
+	
 	    if (node == nullptr)
 		{
 			return new AVLNode<T>(x);
