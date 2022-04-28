@@ -38,7 +38,24 @@ n";
 	cout << endl;
 	cout << "2. Our Test Cases:" << endl << endl;
 	cout << "-----------------------------" << endl << endl;
-	// Implement here
+	
+	AVLTree<int> tree3;
+	cout << "\n\nInsert 10, 40, 20, 80, 60, 50 & 70 into an empty AVL tree\n\n\n\
+n";
+	tree3.insert(10);
+	tree3.insert(40);
+	tree3.insert(20);
+	tree3.insert(80);
+	tree3.insert(60);
+	tree3.insert(50);
+	tree3.insert(70);
+	cout << "Printing keys:" << endl;
+	tree3.showAvlST();
+	cout << "Printing balance factors:" << endl;
+	tree3.showBF();
+	cout << endl;
+	cout << endl;
+	
 	system("pause");
 	return 0;
 }
